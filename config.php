@@ -1,10 +1,10 @@
 
 <?php
 // --- DATABASE CONFIGURATION ---
-define('DB_HOST', 'your_mysql_host');
-define('DB_USER', 'your_mysql_username');
-define('DB_PASS', 'your_mysql_password');
-define('DB_NAME', 'your_database_name');
+define('DB_HOST', 'sql109.infinityfree.com');
+define('DB_USER', 'if0_39608724');
+define('DB_PASS', 'DGu6OOjEYty');
+define('DB_NAME', 'if0_39608724_SkillzUp');
 
 // --- SITE CONFIGURATION ---
 define('BASE_URL', 'http://your-backend-domain.com');
