@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Register</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display.swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0a192f; color: #cbd5e1; }
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body class="bg-[#0a192f] flex items-center justify-center min-h-screen">
+
+    <!-- मुख्य लॉगिन कंपोनेंट -->
+    <div class="w-full max-w-md mx-auto" 
+         x-data="authForm()">
+        <div class="bg-slate-800 rounded-xl p-8 shadow-lg">
+            
+            <div class="text-center mb-8">
+                <a href="index.html" class="text-3xl font-bold text-white">Logo</a>
+                <p class="text-slate-400 mt-2" x-text="isLogin ? 'Welcome back!' : 'Create your account'"></p>
+            </div>
+
+            <!-- एरर मैसेज दिखाने के लिए -->
+            <div x-show="errorMessage" x-text="errorMessage" class="bg-red-500/20 text-red-300 p-3 rounded-md mb-4 text-center"></div>
+
+            <!-- Login Form -->
+            <form x-show="isLogin" @submit.prevent="handleLogin()" x-cloak class="space-y-6">
+                <div>
+                    <label for="login-email" class="block text-sm font-medium text-slate-300">Email</label>
+                    <input type="email" id="login-email" x-model="loginData.email" class="mt-1 block w-full bg-slate-700 border-slate-600 rounded-md p-3 text-white focus:ring-sky-500 focus:border-sky-500" placeholder="you@example.com" required>
+                </div>
+                <div>
+                    <label for="login-password" class="block text-sm font-medium text-slate-300">Password</label>
+                    <input type="password" id="login-password" x-model="loginData.password" class="mt-1 block w-full bg-slate-700 border-slate-600 rounded-md p-3 text-white focus:ring-sky-500 focus:border-sky-500" placeholder="••••••••" required>
+                </div>
+                <div>
+                    <button type="submit" class="w-full bg-sky-500 text-white font-bold py-3 rounded-lg hover:bg-sky-600 disabled:opacity-50" :disabled="loading">
+                        <span x-show="!loading">Login</span>
+                        <span x-show="loading">Loading...</span>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Registration Form (इसे भी आप इसी तरह बना सकते हैं) -->
+            <form x-show="!isLogin" @submit.prevent="handleRegister()" x-cloak class="space-y-6">
+                <!-- Registration fields go here -->
+                 <div>
+                    <label for="reg-name" class="block text-sm font-medium text-slate-300">Full Name</label>
+                    <input type="text" id="reg-name" class="mt-1 block w-full bg-slate-700 border-slate-600 rounded-md p-3 text-white focus:ring-sky-500 focus:border-sky-500" placeholder="John Doe">
+                </div>
+                <div>
+                    <label for="reg-email" class="block text-sm font-medium text-slate-300">Email</label>
+                    <input type="email" id="reg-email" class="mt-1 block w-full bg-slate-700 border-slate-600 rounded-md p-3 text-white focus:ring-sky-500 focus:border-sky-500" placeholder="you@example.com">
+                </div>
+                <div>
+                    <label for="reg-password" class="block text-sm font-medium text-slate-300">Password</label>
+                    <input type="password" id="reg-password" class="mt-1 block w-full bg-slate-700 border-slate-600 rounded-md p-3 text-white focus:ring-sky-500 focus:border-sky-500" placeholder="••••••••">
+                </div>
+                <div>
+                    <button type="submit" class="w-full bg-yellow-400 text-[#0a192f] font-bold py-3 rounded-lg hover:bg-yellow-500">Create Account</button>
+                </div>
+            </form>
+
+            <!-- Toggle -->
+            <div class="text-center mt-6">
+                <p class="text-slate-400">
+                    <span x-text="isLogin ? 'Don\'t have an account?' : 'Already have an account?'"></span>
+                    <button @click="isLogin = !isLogin; errorMessage = ''" class="font-semibold text-sky-400 hover:underline" x-text="isLogin ? 'Sign Up' : 'Log In'"></button>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function authForm() {
+            return {
+                isLogin: true,
+                loading: false,
+                errorMessage: '',
+                loginData: {
+                    email: '',
+                    password: ''
+                },
+                // यह सबसे महत्वपूर्ण हिस्सा है
+                async handleLogin() {
+                    this.loading = true;
+                    this.errorMessage = '';
+
+                    try {
+                        // !!! यहाँ अपना सही बैकएंड URL डालें !!!
+                        const apiUrl = 'http://your-backend-domain.com/api/login.php';
+
+                        const response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(this.loginData)
+                        });
+
+                        const result = await response.json();
+
+                        if (result.success) {
+                            // लॉगिन सफल!
+                            // आप उपयोगकर्ता को डैशबोर्ड पर भेज सकते हैं
+                            alert('Login Successful!');
+                            window.location.href = 'mycourses.html';
+                        } else {
+                            // लॉगिन विफल
+                            this.errorMessage = result.message;
+                        }
+
+                    } catch (error) {
+                        // नेटवर्क या सर्वर एरर
+                        this.errorMessage = 'An error occurred. Please try again.';
+                        console.error('Login error:', error);
+                    } finally {
+                        this.loading = false;
+                    }
+                },
+                handleRegister() {
+                    // आप रजिस्ट्रेशन के लिए भी ऐसा ही फंक्शन बना सकते हैं
+                    alert('Registration functionality to be added.');
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
