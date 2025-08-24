@@ -1,7 +1,25 @@
 <?php
+/**
+ * CORS HEADERS - इन्हें सबसे ऊपर रखें
+ */
+header("Access-Control-Allow-Origin: *"); // प्रोडक्शन में '*' की जगह 'https://your-netlify-site.app' डालें
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
+// ब्राउज़र पहले एक OPTIONS रिक्वेस्ट भेजता है, उसे हैंडल करना ज़रूरी है
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
+// --- CORS का हिस्सा यहाँ खत्म होता है ---
+
+
+// अब आपका बाकी का PHP कोड शुरू होगा
 require_once '../common/config.php';
 
-header('Content-Type: application/json');
+header('Content-Type: application/json'); // यह लाइन यहीं रहेगी
+
+// ... बाकी का पूरा कोड जैसा था वैसा ही रहेगा ...
 header('Access-Control-Allow-Origin: *'); // Restrict in production
 
 $response = ['success' => false, 'message' => 'Invalid credentials.'];
