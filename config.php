@@ -7,7 +7,7 @@ define('DB_PASS', 'DGu6OOjEYty');
 define('DB_NAME', 'if0_39608724_SkillzUp');
 
 // --- SITE CONFIGURATION ---
-define('BASE_URL', 'http://your-backend-domain.com');
+define('BASE_URL', 'https://skillzup.great-site.net');
 
 // --- DATABASE CONNECTION (PDO) ---
 try {
