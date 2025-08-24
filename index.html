@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillzUp - The Art of Skill</title>
+
+    <!-- CDNs: Tailwind, Font Awesome, Google Fonts, GSAP -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #000000; color: #E2E8F0; overflow-x: hidden; }
+        .hero-text-mask { clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); }
+        .hero-text-mask > span { display: block; transform: translateY(120%); }
+        .hero-gradient-bg {
+            background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(14, 165, 233, 0.3), rgba(14, 165, 233, 0));
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- =========== HEADER =========== -->
+    <header class="fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto max-w-7xl px-6 py-5">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-black text-white">SkillzUp.</div>
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="bg-white/10 text-white px-5 py-2 rounded-full text-sm font-semibold backdrop-blur-lg border border-white/20 hover:bg-white/20 transition-colors">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- =========== MAIN CONTENT =========== -->
+    <main>
+        <!-- =========== HERO SECTION =========== -->
+        <section class="min-h-screen flex items-center justify-center relative hero-gradient-bg">
+            <div class="container mx-auto max-w-7xl px-6 text-center">
+                <h1 class="text-6xl md:text-8xl font-black tracking-tighter leading-none">
+                    <div class="hero-text-mask"><span>Stop Watching.</span></div>
+                    <div class="hero-text-mask"><span class="text-sky-400">Start Doing.</span></div>
+                </h1>
+                <div class="hero-text-mask">
+                    <p class="mt-6 max-w-2xl mx-auto text-lg text-slate-400">
+                        From chaotic tutorials to focused mastery. <br> India's top creators teach you the skills that matter. In your language.
+                    </p>
+                </div>
+            </div>
+            <!-- SCROLL DOWN INDICATOR -->
+            <div id="scroll-indicator" class="absolute bottom-10 left-1/2 -ml-4 text-slate-500">
+                <i class="fas fa-chevron-down text-2xl animate-bounce"></i>
+            </div>
+        </section>
+
+        <!-- =========== FEATURED COURSES (HORIZONTAL SCROLL) =========== -->
+        <section id="courses-container" class="py-20 relative">
+            <div id="courses-panel" class="flex w-[300vw]">
+                <!-- Panel 1: Title -->
+                <div class="w-screen h-full flex flex-col justify-center items-start pl-20">
+                     <h2 class="text-5xl font-bold">Featured Courses</h2>
+                     <p class="text-slate-400 mt-2">Swipe to explore →</p>
+                </div>
+
+                <!-- Panel 2, 3, 4: Course Cards -->
+                <div class="w-screen h-full flex items-center justify-center gap-8">
+                     <!-- Course Card 1 -->
+                    <div class="w-80 h-96 bg-slate-800 rounded-2xl p-6 flex flex-col justify-end" style="background: url('https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=600') center center / cover;">
+                        <div class="bg-black/50 backdrop-blur-lg p-4 rounded-xl border border-white/20">
+                            <h3 class="font-bold text-lg">The Ultimate Video Editing Course</h3>
+                            <p class="text-sm text-slate-300">By Aarushi Sharma</p>
+                        </div>
+                    </div>
+                    <!-- Course Card 2 -->
+                    <div class="w-80 h-96 bg-slate-800 rounded-2xl p-6 flex flex-col justify-end" style="background: url('https://images.pexels.com/photos/326503/pexels-photo-326503.jpeg?auto=compress&cs=tinysrgb&w=600') center center / cover;">
+                         <div class="bg-black/50 backdrop-blur-lg p-4 rounded-xl border border-white/20">
+                            <h3 class="font-bold text-lg">Modern Graphic Design</h3>
+                            <p class="text-sm text-slate-300">By Rohan Singh</p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="w-screen h-full flex items-center justify-center gap-8">
+                      <!-- Course Card 3 -->
+                    <div class="w-80 h-96 bg-slate-800 rounded-2xl p-6 flex flex-col justify-end" style="background: url('https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=600') center center / cover;">
+                         <div class="bg-black/50 backdrop-blur-lg p-4 rounded-xl border border-white/20">
+                            <h3 class="font-bold text-lg">Web Development Bootcamp</h3>
+                            <p class="text-sm text-slate-300">By Priya Kumar</p>
+                        </div>
+                    </div>
+                     <!-- Add a "View All" card -->
+                    <div class="w-80 h-96 bg-sky-500 rounded-2xl p-6 flex flex-col justify-center items-center text-center">
+                        <i class="fas fa-arrow-right text-4xl"></i>
+                        <h3 class="font-bold text-2xl mt-4">Explore All Courses</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- This is a placeholder for the next section, to ensure scrolling works -->
+        <section class="h-screen">
+             <h2 class="text-center text-5xl pt-32">Next Section...</h2>
+        </section>
+
+    </main>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Hero Section Intro Animation
+            gsap.to(".hero-text-mask > span", {
+                y: 0,
+                stagger: 0.2,
+                duration: 1.5,
+                ease: 'expo.out'
+            });
+
+            // Horizontal Scrolling Section
+            const coursesPanel = document.getElementById('courses-panel');
+            gsap.to(coursesPanel, {
+                x: () => -(coursesPanel.scrollWidth - window.innerWidth),
+                ease: "none",
+                scrollTrigger: {
+                    trigger: "#courses-container",
+                    pin: true,
+                    scrub: 1,
+                    end: () => "+=" + (coursesPanel.scrollWidth - window.innerWidth)
+                }
+            });
+        });
+    </script>
+</body>
+</html>
