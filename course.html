@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Catalog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0a192f; color: #cbd5e1; }
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body class="bg-[#0a192f]">
+
+    <!-- Header -->
+    <header class="p-6 flex justify-between items-center">
+         <a href="index.html" class="text-2xl font-bold text-white">Logo</a>
+        <nav class="space-x-6">
+            <a href="course.html" class="text-sky-400">Courses</a>
+            <a href="mycourses.html" class="text-slate-300 hover:text-sky-400">My Courses</a>
+            <a href="login.html" class="bg-sky-500 text-white px-4 py-2 rounded-md hover:bg-sky-600">Login</a>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12" x-data="courseCatalog()">
+        <h1 class="text-5xl font-bold text-center mb-12">All Courses</h1>
+
+        <!-- Filters -->
+        <div class="flex justify-center space-x-4 mb-12">
+            <button @click="filter = 'all'" :class="{'bg-sky-500 text-white': filter === 'all', 'bg-slate-700 text-slate-300': filter !== 'all'}" class="px-6 py-2 rounded-full font-semibold">All</button>
+            <button @click="filter = 'Development'" :class="{'bg-sky-500 text-white': filter === 'Development', 'bg-slate-700 text-slate-300': filter !== 'Development'}" class="px-6 py-2 rounded-full font-semibold">Development</button>
+            <button @click="filter = 'Design'" :class="{'bg-sky-500 text-white': filter === 'Design', 'bg-slate-700 text-slate-300': filter !== 'Design'}" class="px-6 py-2 rounded-full font-semibold">Design</button>
+        </div>
+
+        <!-- Course Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <template x-for="course in filteredCourses" :key="course.id">
+                <div class="bg-slate-800 rounded-lg overflow-hidden" x-show="filter === 'all' || course.category === filter"
+                     x-transition:enter="transition ease-out duration-300"
+                     x-transition:enter-start="opacity-0 transform scale-90"
+                     x-transition:enter-end="opacity-100 transform scale-100"
+                     x-transition:leave="transition ease-in duration-300"
+                     x-transition:leave-start="opacity-100 transform scale-100"
+                     x-transition:leave-end="opacity-0 transform scale-90">
+                    
+                    <img :src="course.thumbnail" alt="Course Thumbnail" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-xs font-semibold text-sky-400" x-text="course.category"></span>
+                        <h3 class="text-2xl font-bold text-white mt-2" x-text="course.title"></h3>
+                        <p class="text-slate-400 mt-2" x-text="course.description"></p>
+                        <a href="course_detail.html" class="inline-block mt-4 text-yellow-400 font-semibold hover:underline">Learn More &rarr;</a>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </main>
+
+    <script>
+        function courseCatalog() {
+            return {
+                filter: 'all',
+                courses: [
+                    { id: 1, title: 'Advanced JavaScript', description: 'Go beyond the basics and master the tricky parts of JS.', category: 'Development', thumbnail: 'https://via.placeholder.com/400x200' },
+                    { id: 2, title: 'UI/UX Design Fundamentals', description: 'Learn the principles of creating intuitive and beautiful user interfaces.', category: 'Design', thumbnail: 'https://via.placeholder.com/400x200' },
+                    { id: 3, title: 'Building APIs with PHP', description: 'Create robust and secure backend APIs from scratch without frameworks.', category: 'Development', thumbnail: 'https://via.placeholder.com/400x200' },
+                    { id: 4, title: 'Mastering Tailwind CSS', description: 'A comprehensive guide to the worlds most popular utility-first CSS framework.', category: 'Development', thumbnail: 'https://via.placeholder.com/400x200' },
+                    { id: 5, title: 'Kinetic Typography with GSAP', description: 'Bring your websites to life with stunning text animations.', category: 'Design', thumbnail: 'https://via.placeholder.com/400x200' },
+                    { id: 6, title: 'Alpine.js for Interactivity', description: 'Add behavior to your markup without the heavy overhead of larger frameworks.', category: 'Development', thumbnail: 'https://via.placeholder.com/400x200' }
+                ],
+                get filteredCourses() {
+                    if (this.filter === 'all') {
+                        return this.courses;
+                    }
+                    return this.courses.filter(course => course.category === this.filter);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
