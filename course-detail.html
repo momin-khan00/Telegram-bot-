@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ultimate Video Editing Course - SkillzUp</title>
+
+    <!-- CDNs: Tailwind, Font Awesome, Google Fonts, Alpine.js, GSAP -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #020617; color: #E2E8F0; }
+        .prose-invert h2, .prose-invert h3 { color: white; }
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- =========== HEADER (Same as other pages) =========== -->
+    <header class="sticky top-0 z-50 bg-slate-900/50 backdrop-blur-lg border-b border-slate-800">
+        <div class="container mx-auto max-w-7xl px-6">
+            <div class="flex justify-between items-center py-4">
+                <a href="index.html" class="text-2xl font-black text-white"><i class="fas fa-rocket text-sky-400"></i> SkillzUp</a>
+                <a href="course.html" class="text-sm font-semibold text-slate-300 hover:text-white transition-colors"><i class="fas fa-arrow-left mr-2"></i> All Courses</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- =========== HERO SECTION (Course Specific) =========== -->
+    <div class="bg-slate-900 border-b border-slate-800">
+        <div class="container mx-auto max-w-7xl px-6 py-12 lg:py-16">
+            <p class="text-sky-400 font-semibold">An Exclusive Course By Aarushi Sharma</p>
+            <h1 class="text-4xl lg:text-5xl font-extrabold mt-2 tracking-tight text-slate-100">The Ultimate Video Editing Course</h1>
+            <p class="mt-4 text-lg text-slate-300 max-w-3xl">Master Adobe Premiere Pro, create viral Reels, and land your first client—even if you've never edited before.</p>
+            <div class="flex items-center space-x-2 mt-4">
+                <span class="font-bold text-yellow-400">4.9</span>
+                <div class="flex text-yellow-400"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                <span class="text-slate-400">(251 ratings)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========== MAIN CONTENT GRID =========== -->
+    <div class="container mx-auto max-w-7xl px-6 py-12">
+        <div class="grid lg:grid-cols-3 lg:gap-12">
+            
+            <!-- LEFT COLUMN (INFORMATION) -->
+            <div class="lg:col-span-2 space-y-12">
+                <!-- What You'll Learn Section -->
+                <section class="gsap-fade-in border border-slate-800 rounded-2xl p-8">
+                    <h2 class="text-3xl font-bold mb-6">What You'll Learn</h2>
+                    <div class="grid md:grid-cols-2 gap-6 text-slate-300 text-lg">
+                        <div class="flex items-start"><i class="fas fa-check-circle text-sky-400 mt-1 mr-4"></i><span>Edit videos professionally using Adobe Premiere Pro.</span></div>
+                        <div class="flex items-start"><i class="fas fa-check-circle text-sky-400 mt-1 mr-4"></i><span>Create engaging, viral Reels and Shorts.</span></div>
+                        <div class="flex items-start"><i class="fas fa-check-circle text-sky-400 mt-1 mr-4"></i><span>Master color grading and audio mixing.</span></div>
+                        <div class="flex items-start"><i class="fas fa-check-circle text-sky-400 mt-1 mr-4"></i><span>Build a portfolio to land freelance clients.</span></div>
+                    </div>
+                </section>
+
+                <!-- Curriculum Section -->
+                <section class="gsap-fade-in" x-data="{ openChapter: 1 }">
+                    <h2 class="text-3xl font-bold mb-6">Course Curriculum</h2>
+                    <div class="border border-slate-800 rounded-lg divide-y divide-slate-800">
+                        <!-- Chapter 1 -->
+                        <div class="faq-item"><button @click="openChapter = (openChapter === 1 ? 0 : 1)" class="w-full flex justify-between items-center p-5"><span class="font-semibold text-lg">Chapter 1: The Basics (5 Lessons)</span><i class="fas text-slate-500" :class="openChapter === 1 ? 'fa-minus' : 'fa-plus'"></i></button><div x-show="openChapter === 1" x-cloak x-transition class="p-5 pt-0 text-slate-300"><ul class="space-y-3 pt-4 border-t border-slate-800">
+                            <li class="flex items-center"><i class="fas fa-play-circle text-slate-500 mr-3"></i><span>Understanding the Interface</span></li>
+                            <li class="flex items-center"><i class="fas fa-play-circle text-slate-500 mr-3"></i><span>Importing & Organizing Footage</span></li>
+                        </ul></div></div>
+                        <!-- Chapter 2 -->
+                        <div class="faq-item"><button @click="openChapter = (openChapter === 2 ? 0 : 2)" class="w-full flex justify-between items-center p-5"><span class="font-semibold text-lg">Chapter 2: Advanced Techniques (8 Lessons)</span><i class="fas text-slate-500" :class="openChapter === 2 ? 'fa-minus' : 'fa-plus'"></i></button><div x-show="openChapter === 2" x-cloak x-transition>...</div></div>
+                    </div>
+                </section>
+
+                <!-- Reviews Section -->
+                 <section class="gsap-fade-in">
+                    <h2 class="text-3xl font-bold mb-6">What Students Are Saying</h2>
+                    <div class="space-y-8">
+                        <!-- Review 1 -->
+                        <div class="border-b border-slate-800 pb-8">
+                            <div class="flex items-center mb-2"><div class="flex text-yellow-400"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div>
+                            <p class="text-lg italic text-slate-300">"This course changed everything. I landed my first freelance client within a month!"</p>
+                            <p class="font-semibold mt-3">- Rohan S.</p>
+                        </div>
+                         <!-- Review 2 -->
+                        <div class="border-b border-slate-800 pb-8">
+                            <div class="flex items-center mb-2"><div class="flex text-yellow-400"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div>
+                            <p class="text-lg italic text-slate-300">"Best course in Hindi. Aarushi explains everything so clearly. Highly recommended."</p>
+                            <p class="font-semibold mt-3">- Priya K.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- RIGHT COLUMN (STICKY BUY CARD) -->
+            <div class="lg:col-span-1 mt-12 lg:mt-0">
+                <div class="sticky top-28">
+                    <div class="bg-slate-800/50 rounded-2xl shadow-2xl overflow-hidden border border-slate-700">
+                        <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=600" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <div class="flex items-baseline justify-center space-x-3 mb-4">
+                                <span class="text-4xl font-extrabold text-white">₹499</span>
+                                <span class="text-xl text-slate-400 line-through">₹1999</span>
+                            </div>
+                            <a href="#" class="block w-full text-center bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-4 rounded-lg text-lg transition-colors">Buy This Course</a>
+                            <p class="text-xs text-slate-400 text-center mt-3">30-Day Money-Back Guarantee</p>
+                            <hr class="my-6 border-slate-700">
+                            <h3 class="font-bold mb-3 text-white">This course includes:</h3>
+                            <ul class="space-y-3 text-slate-300">
+                                <li class="flex items-center"><i class="fas fa-video w-6 text-slate-500"></i>50+ Video Lessons</li>
+                                <li class="flex items-center"><i class="fas fa-infinity w-6 text-slate-500"></i>Full Lifetime Access</li>
+                                <li class="flex items-center"><i class="fas fa-certificate w-6 text-slate-500"></i>Certificate of Completion</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            gsap.registerPlugin(ScrollTrigger);
+            // Staggered fade-in animation for sections
+            gsap.utils.toArray('.gsap-fade-in').forEach(section => {
+                gsap.from(section, {
+                    opacity: 0,
+                    y: 50,
+                    duration: 0.8,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top 85%",
+                        toggleActions: "play none none none"
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
