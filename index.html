@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillzUp - Learn Real Skills</title>
+
+    <!-- CDNs: Tailwind, Font Awesome, Google Fonts, GSAP -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #000; }
+        .stage {
+            width: 400px; /* Vertical aspect ratio for mobile */
+            height: 800px;
+        }
+        .scene { position: absolute; inset: 0; opacity: 0; visibility: hidden; overflow: hidden; }
+        /* Kinetic Typography Mask */
+        .text-mask { clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); }
+        .text-mask > div { transform: translateY(110%); }
+        
+        .youtube-thumbnail {
+            background: #222; border: 1px solid #444; border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+        }
+        .skillzup-chapter {
+            background: rgba(14, 23, 46, 0.5); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(14, 165, 233, 0.3); border-radius: 12px;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+
+    <div class="stage shadow-2xl rounded-3xl overflow-hidden relative bg-black text-white">
+        
+        <!-- SCENE 1: The Problem - "The YouTube Rabbit Hole" -->
+        <div id="scene1" class="scene flex flex-col justify-center items-center p-8 bg-gradient-to-b from-slate-900 to-black">
+            <div class="relative w-full h-96">
+                <!-- THUMBNAILS - BADLEIN: Yahan Pexels/Unsplash se direct image links daalein -->
+                <div class="youtube-thumbnail absolute w-52 h-32" style="top: 10%; left: 5%; transform: rotate(-8deg);"><img src="https://images.pexels.com/photos/4144144/pexels-photo-4144144.jpeg?auto=compress&cs=tinysrgb&w=400" class="w-full h-full object-cover rounded-xl"></div>
+                <div class="youtube-thumbnail absolute w-52 h-32" style="top: 20%; right: 2%; transform: rotate(10deg);"><img src="https://images.pexels.com/photos/5905479/pexels-photo-5905479.jpeg?auto=compress&cs=tinysrgb&w=400" class="w-full h-full object-cover rounded-xl"></div>
+                <div class="youtube-thumbnail absolute w-52 h-32" style="top: 45%; left: 15%; transform: rotate(-15deg);"><img src="https://images.pexels.com/photos/5905709/pexels-photo-5905709.jpeg?auto=compress&cs=tinysrgb&w=400" class="w-full h-full object-cover rounded-xl"></div>
+                <div class="youtube-thumbnail absolute w-52 h-32" style="bottom: 10%; right: 10%; transform: rotate(5deg);"><img src="https://images.pexels.com/photos/3861964/pexels-photo-3861964.jpeg?auto=compress&cs=tinysrgb&w=400" class="w-full h-full object-cover rounded-xl"></div>
+            </div>
+            <!-- TEXT - BADLEIN: Yahan apna text likhein -->
+            <h2 class="text-3xl font-bold mt-8 text-mask"><div>Free tutorials mein</div></h2>
+            <h2 class="text-3xl font-bold text-mask"><div class="text-red-500">ulajh gaye?</div></h2>
+        </div>
+
+        <!-- SCENE 2: The Solution - "SkillzUp Ka Anubhav" -->
+        <div id="scene2" class="scene flex flex-col justify-center p-6 bg-gradient-to-b from-sky-900 via-slate-900 to-black">
+            <h2 class="text-3xl font-bold text-center mb-8 text-mask"><div>Aapki bhasha mein.</div></h2>
+            <h2 class="text-3xl font-bold text-center text-mask"><div class="text-yellow-400">Bina distraction ke.</div></h2>
+            <div class="w-full mt-8">
+                <div class="skillzup-chapter p-4 mb-3 flex items-center"><i class="fas fa-play-circle text-sky-400 mr-3"></i> Chapter 1: The Basics</div>
+                <div class="skillzup-chapter p-4 mb-3 bg-sky-900/50 border-sky-500 flex items-center"><i class="fas fa-play-circle text-sky-400 mr-3"></i> Chapter 2: Advanced Techniques</div>
+                <div class="skillzup-chapter p-4 mb-3 flex items-center"><i class="fas fa-lock text-slate-400 mr-3"></i> Chapter 3: Pro-Level Color Grading</div>
+                <div class="skillzup-chapter p-4 mb-3 flex items-center"><i class="fas fa-lock text-slate-400 mr-3"></i> Chapter 4: Final Project</div>
+            </div>
+        </div>
+        
+        <!-- SCENE 3: The Transformation - "The Pro" -->
+        <div id="scene3" class="scene flex flex-col justify-center items-center p-8">
+             <!-- IMAGE - BADLEIN: Yahan ek happy student/creator ka direct link daalein -->
+             <img src="https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Happy Creator" class="w-48 h-48 rounded-full shadow-2xl mb-8 object-cover border-4 border-slate-700">
+             <div class="bg-green-600 text-white p-3 rounded-lg mb-8 flex items-center shadow-lg">
+                <i class="fas fa-check-circle mr-3"></i> Payment Received: ₹5,000
+             </div>
+             <!-- TEXT - BADLEIN: Yahan apna text likhein -->
+             <h2 class="text-5xl font-black text-mask"><div>SEEKHO.</div></h2>
+             <h2 class="text-5xl font-black text-mask"><div>BANAO.</div></h2>
+             <h2 class="text-5xl font-black text-mask"><div>KAMAO.</div></h2>
+        </div>
+
+        <!-- SCENE 4: The Final CTA -->
+        <div id="scene4" class="scene flex flex-col justify-center items-center text-center p-8 bg-sky-600">
+            <div class="w-28 h-28 bg-white rounded-full flex items-center justify-center mb-8 shadow-2xl">
+                <!-- ICON - BADLEIN: Yahan apna icon chunein -->
+                <i class="fas fa-rocket text-6xl text-sky-600"></i>
+            </div>
+            <h1 class="text-6xl font-black text-white">SkillzUp</h1>
+            <!-- TEXT - BADLEIN: Yahan apna final message likhein -->
+            <h2 class="text-2xl mt-8 font-bold text-yellow-300 bg-black/30 p-4 rounded-lg">Pehla Chapter Free Try Karo.</h2>
+        </div>
+
+    </div>
+
+    <script>
+        const tl = gsap.timeline({ defaults: { duration: 1, ease: 'power2.inOut' } });
+
+        // Scene 1: The Problem
+        tl.to("#scene1", { autoAlpha: 1 });
+        tl.from("#scene1 .youtube-thumbnail", { y: 20, opacity: 0, stagger: 0.2, duration: 0.8 });
+        tl.to("#scene1 h2.text-mask > div", { y: 0, stagger: 0.2, duration: 0.8 });
+        tl.to("#scene1", { scale: 0.9, opacity: 0, duration: 0.8 }, "+=3");
+
+        // Scene 2: The Solution
+        tl.to("#scene2", { autoAlpha: 1 });
+        tl.to("#scene2 h2.text-mask > div", { y: 0, stagger: 0.2 });
+        tl.from("#scene2 .skillzup-chapter", { x: -50, opacity: 0, stagger: 0.3 }, "-=0.5");
+        tl.to("#scene2", { opacity: 0, duration: 0.8 }, "+=3");
+
+        // Scene 3: The Transformation
+        tl.to("#scene3", { autoAlpha: 1 });
+        tl.from("#scene3 img", { scale: 0.5, opacity: 0, ease: 'back.out' });
+        tl.from("#scene3 .bg-green-600", { y: 20, opacity: 0 }, "-=0.5");
+        tl.to("#scene3 h2.text-mask > div", { y: 0, stagger: 0.3, duration: 1.2 }, "+=0.5");
+        tl.to("#scene3", { opacity: 0, duration: 0.8 }, "+=3");
+
+        // Scene 4: The Final CTA
+        tl.to("#scene4", { autoAlpha: 1 });
+        tl.from("#scene4 > div", { scale: 0.5, opacity: 0, ease: 'back.out' });
+        tl.from("#scene4 h1", { y: 20, opacity: 0 }, "-=0.7");
+        tl.from("#scene4 h2", { scale: 0.8, opacity: 0, ease: 'back.out' }, "-=0.5");
+    </script>
+</body>
+</html>
